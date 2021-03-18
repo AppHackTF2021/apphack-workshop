@@ -19,7 +19,7 @@ No, we'll proceed with version `0.14.7` for simplicity purposes this time
 
 You will not need to install Terraform, the AWS CLI or any other packages on your computers to complete this challenge. You will be provided with a virtual environment which already contains all the tools needed.
 
-To get started, open up a web browser of you choice and navigate to [AWS URL]. Use the team name and password we provided you to sign in to the AWS console
+To get started, open up a web browser of you choice and navigate to https://console.aws.amazon.com/?nc2 . Use the team name and password we provided you to sign in to the AWS console
 ...
 
 # Stage 0
