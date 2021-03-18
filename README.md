@@ -137,11 +137,11 @@ Now you're ready to begin the challenge. **Keep both files, but you may remove t
 ## Architecture
 ![Stage 1](./images/stage-1.png)
 
-In the first stage, you will launch a very basic AWS resource - an S3 bucket that will later serve a higher purpose. This is obviously far from a secure solution, but this is just the first step. Use the following information for the AWS resources you will need to define in your Terraform template files:
+In the first stage, you will launch a very basic AWS resource - an S3 bucket that will later serve a higher purpose. This is obviously far from a secure solution, but this is just the first step. You will need to define in your Terraform template files:
 
 * Provider
-* Resource
-* Use tags to name your resources and to identify your team as owner of the resource. For example, within each Terraform resource, declare a tags block (if the resource supports tags) with Name and Team keys:
+* Generic S3 bucket
+  * Use tags to name your resources and to identify your team as owner of the resource. For example, within each Terraform resource, declare a tags block (if the resource supports tags) with Name and Team keys:
 
 ```
 resource "aws_s3_bucket" "teambucket" {
@@ -168,6 +168,13 @@ You will have completed the first Stage if you go to your web browser, navigate 
 
 ## Static Website Hosting
 
+To help you identify all AWS resources you will need to complete Stage 2, take a look at the references below:
+
+* [S3 Bucket Object](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_object)
+* [S3 Bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#static-website-hosting)
+
+If you are still in doubt how to organize all these resources in order to create the Stage 2 infrastructure, please reach out to one of the organizers.
+
 ## DoD (Definition of Done)
 
 # Stage 3
@@ -176,11 +183,24 @@ You will have completed the first Stage if you go to your web browser, navigate 
 
 Note: don't spam other peoples' emails to troll. If we catch you doing this we will delete you cloud9 and you'll be done
 
+To help you identify all AWS resources you will need to complete Stage 2, take a look at the references below:
+
+* [SNS Topic](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic)
+* [SNS Topic Subscription](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/sns_topic_subscription)
+
+If you are still in doubt how to organize all these resources in order to create the Stage 3 infrastructure, please reach out to one of the organizers.
+
 ## DoD (Definition of Done)
 
 # Stage 4
 
 ## S3 Bucket Notifications
+
+To help you identify all AWS resources you will need to complete Stage 2, take a look at the reference below:
+
+* [S3 Bucket Notification](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_notification)
+
+If you are still in doubt how to organize all these resources in order to create the Stage 3 infrastructure, please reach out to one of the organizers.
 
 ## DoD (Definition of Done)
 
