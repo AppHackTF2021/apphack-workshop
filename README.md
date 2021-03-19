@@ -188,6 +188,8 @@ acl
 content_type
 ```
 
+Note: for your `soure` attribute, feel free to update line 42 in your index.html file to replace the `{}` with your name/team number
+
 To help you identify and understand all attribute values you will need to complete Stage 2, take a look at the references below:
 
 * [S3 Bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#static-website-hosting)
