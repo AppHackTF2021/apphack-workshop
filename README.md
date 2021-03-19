@@ -13,16 +13,21 @@ To take this challenge, you will have to provision the same base infrastructure 
 
 ## I heard there are later versions of Terraform coming out. Will we use them?
 
-No, we'll proceed with version `0.14.7` for simplicity purposes this time
+No, we'll proceed with version `0.14.8` for simplicity purposes this time
 
 # Getting started
 
 You will not need to install Terraform, the AWS CLI or any other packages on your computers to complete this challenge. You will be provided with a virtual environment which already contains all the tools needed.
 
-To get started, open up a web browser of you choice and navigate to [AWS URL]. Use the team name and password we provided you to sign in to the AWS console
+To get started, open up a web browser of you choice and navigate to https://ACCOUNT_ID.signin.aws.amazon.com/console?region=us-east-1. Use the team name and password we provided you to sign in to the AWS console
+
+Next, use the search bar and navigate to `Cloud9`. You will see your own environment and then click on `Open IDE`.
 ...
 
 # Stage 0
+
+Once you are at the IDE please run the command `git clone https://github.com/AppHackTF2021/apphack-workshop.git && cd apphack-workshop`
+This will pull down our repo into your terminal and navigate to the git repo you just pulled down.
 
 This stage will get you familiar enough with Terraform so you can start building the solution in the next stages. **However, if you are already experienced in using Terraform, you can skip to Stage 1**.
 
@@ -145,21 +150,16 @@ In the first stage, you will launch a very basic AWS resource - an S3 bucket tha
 
 ```
 resource "aws_s3_bucket" "teambucket" {
-  bucket = "apphack-team-X-bucket"
+  bucket = "apphack-team-X-bucket" // Update with the name of your team
   acl    = "private"
 
   tags = {
-    Name        = "Name of the reosurce"
+    Name = "yourName"
     Team = "Team X"
   }
 }
 ```
 Note: You'll need to replace the 'X' in this block to the actual team number you were assigned prior to beginning this challenge
-
-## Output
-
-Since you will not have access to the AWS Console, there needs to be a way for you to find out the IP address of your instance. Use [Output Variables](https://www.terraform.io/intro/getting-started/outputs.html) for that.
-
 ## DoD (Definition of Done)
 
 You will have completed the first Stage if you go to your web browser, navigate to the S3 service-. This means you have successfully deployed your team's S3 bucket.
@@ -170,8 +170,9 @@ You will have completed the first Stage if you go to your web browser, navigate 
 
 To help you identify all AWS resources you will need to complete Stage 2, take a look at the references below:
 
-* [S3 Bucket Object](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_object)
 * [S3 Bucket](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket#static-website-hosting)
+
+* [S3 Bucket Object](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_object)
 
 If you are still in doubt how to organize all these resources in order to create the Stage 2 infrastructure, please reach out to one of the organizers.
 
