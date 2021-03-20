@@ -156,10 +156,10 @@ main.tf
 ```
 resource "aws_s3_bucket" "teambucket" {
   bucket = "apphack-team-X-bucket" // Update with the name of your team
-  acl    = "private"
+  acl    = "public-read"
 
   tags = {
-    Name = "yourName"
+    Name = "Your Name"
     Team = "Team X"
   }
 }
@@ -188,7 +188,7 @@ acl
 content_type
 ```
 
-Note: for your `soure` attribute, feel free to update line 42 in your index.html file to replace the `{}` with your name/team number
+Note: you may feel free to update line 42 in your index.html file to replace the `{}` with your name/team number
 
 To help you identify and understand all attribute values you will need to complete Stage 2, take a look at the references below:
 
@@ -272,7 +272,7 @@ topic {
 }
 ```
 
-After you have successfully applied this resource, confirm its functionality by drag & dropping the `assets` and `images` (found in the `website/` directory of this repo) folders out of your Cloud9 environment, and into the root level of your S3 bucket.
+After you have successfully applied this resource, confirm its functionality by downloading & extracting the `assets` and `images` (found in the `website/` directory of this repo) folders from this Github page, and dropping them into the root level of your S3 bucket.
 
 To help you understand the AWS resource you will need to complete Stage 4, take a look at the reference below:
 
