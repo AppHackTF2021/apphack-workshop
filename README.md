@@ -19,7 +19,7 @@ No, we'll proceed with version `0.14.8` for simplicity purposes at this time
 
 You will not need to install Terraform, the AWS CLI or any other packages on your computers to complete this challenge. You will be provided with a virtual environment which already contains all the tools needed.
 
-To get started, open up a web browser of your choice and navigate to https://284597760607.signin.aws.amazon.com/console?region=us-east-1. Use the team name and password we provided you with to fill in the values for `IAM user name` and `Password`, respectively, to sign in to the AWS console.
+To get started, open up a web browser of your choice and navigate to <https://284597760607.signin.aws.amazon.com/console?region=us-east-1>. Use the team name and password we provided you with to fill in the values for `IAM user name` and `Password`, respectively, to sign in to the AWS console.
 
 Once you have successfully signed in you'll be welcomed to the AWS Console Home page. From here you'll be able to discover over 150 AWS services, manage and monitor your cloud-based applications, and most importantly build your solution for this challenge. During this workshop you'll be charged to stand up a webpage using some resources we provided in this repository. To accomplish this we'll leverage one of the most simple, yet powerful of all AWS services - Amazon S3. Hosting a static website on Amazon S3 delivers a highly performant and scalable website at a fraction of the cost/effort of a traditional web server. In fact if you do enough digging, you'll be surprised at how many companies you find that use S3 in some capacity.
 
@@ -35,7 +35,8 @@ This stage will get you familiar enough with Terraform so you can start building
 First, utilize the Cloud9 workspace you located in the **Getting Started** section and create two files called **providers.tf** and  **outputs.tf** with the following content:
 
 providers.tf
-```
+
+```terraform
 terraform {
   # This module is now only being tested with Terraform 0.14.x - we are setting
   # 0.14.1 as the minimum version
@@ -50,7 +51,8 @@ provider "aws" {
 ```
 
 outputs.tf
-```
+
+```terraform
 # The simplest possible Terraform module: it just outputs "Hello, World!"
 output "intro" {
   value = "Hello, World!"
@@ -63,22 +65,20 @@ The resource block (with syntax: *output "RESOURCE_NAME" {}*), on the other hand
 
 Once you finish output.tf, the first command you will run is *terraform init*:
 
-```
+```bash
 $ terraform init
 
+Initializing the backend...
+
 Initializing provider plugins...
-- Checking for available provider plugins on https://releases.hashicorp.com...
-- Downloading plugin for provider "aws" (1.28.0)...
+- Finding latest version of hashicorp/aws...
+- Installing hashicorp/aws v3.33.0...
+- Installed hashicorp/aws v3.33.0 (signed by HashiCorp)
 
-The following providers do not have any version constraints in configuration,
-so the latest version was installed.
-
-To prevent automatic upgrades to new major versions that may contain breaking
-changes, it is recommended to add version = "..." constraints to the
-corresponding provider blocks in configuration, with the constraint strings
-suggested below.
-
-* provider.aws: version = "~> 1.28"
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
 
 Terraform has been successfully initialized!
 
@@ -101,17 +101,20 @@ You will also need to rerun *terraform init* whenever you:
 
 Next, let's see how we can perform a dry run. Run the following command:
 
-```
+```bash
 $ terraform plan
-Refreshing Terraform state in-memory prior to plan...
-The refreshed state will be used to calculate this plan, but will not be
-persisted to local or remote state storage.
-
-
-------------------------------------------------------------------------
 
 An execution plan has been generated and is shown below.
-...
+Resource actions are indicated with the following symbols:
+
+Terraform will perform the following actions:
+
+Plan: 0 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + intro = "Hello, World!"
+
+------------------------------------------------------------------------
 
 Note: You didn't specify an "-out" parameter to save this plan, so Terraform
 can't guarantee that exactly these actions will be performed if
@@ -142,7 +145,7 @@ Now you're ready to begin the challenge. **Keep both files, but you may remove t
 # Stage 1
 
 ## Architecture
-![Stage 1](./images/stage-1.png)
+![Stage 1](./images/s3_web.png)
 
 In the first stage, you will launch a very basic AWS resource - an S3 bucket that will later serve a higher purpose. This is obviously far from a secure solution, but this is just the first step. You will need to define in your Terraform template files:
 
@@ -153,7 +156,7 @@ In the first stage, you will launch a very basic AWS resource - an S3 bucket tha
   * Name of the bucket
 
 main.tf
-```
+```terraform
 resource "aws_s3_bucket" "teambucket" {
   bucket = "apphack-team-X-bucket" // Update with the name of your team
   acl    = "public-read"
