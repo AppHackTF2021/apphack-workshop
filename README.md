@@ -213,7 +213,20 @@ Next up, SNS! In this stage you'll need to create two or four additional resourc
 topic
 ```
 name
-policy (optional)
+policy = <<POLICY
+{
+    "Version":"2012-10-17",
+    "Statement":[{
+        "Effect": "Allow",
+        "Principal": { "Service": "s3.amazonaws.com" },
+        "Action": "SNS:Publish",
+        "Resource": "arn:aws:sns:*:*:team-X-topic",
+        "Condition":{
+            "ArnLike":{"aws:SourceArn":"${aws_s3_bucket.teambucket.arn}"}
+        }
+    }]
+}
+POLICY
 ```
 
 subscription
